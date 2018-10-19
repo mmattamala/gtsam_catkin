@@ -11,7 +11,6 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 ExternalProject_Add(gtsam_src
   GIT_REPOSITORY git@bitbucket.org:gtborg/gtsam.git
   GIT_TAG develop
-  #GIT_TAG 3c1d2746a80e4ddbb4f234794831a887ff070ca7
   UPDATE_COMMAND ""
   PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/use_catkinized_metis.patch &&
                 patch -p1 < ${CMAKE_SOURCE_DIR}/fix_warnings.patch
