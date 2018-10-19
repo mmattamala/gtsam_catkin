@@ -1,23 +1,24 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.1)
 project(gtsam_catkin)
 
 find_package(catkin_simple REQUIRED)
-
-find_package(eigen_catkin REQUIRED)
 
 catkin_simple()
 
 include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
+
 ExternalProject_Add(gtsam_src
-  GIT_REPOSITORY https://bitbucket.org/gtborg/gtsam.git
-  GIT_TAG master
+  GIT_REPOSITORY git@bitbucket.org:gtborg/gtsam.git
+  GIT_TAG develop
+  #GIT_TAG 3c1d2746a80e4ddbb4f234794831a887ff070ca7
   UPDATE_COMMAND ""
   PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/use_catkinized_metis.patch &&
                 patch -p1 < ${CMAKE_SOURCE_DIR}/fix_warnings.patch
                 CONFIGURE_COMMAND cmake -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
                 -DGTSAM_USE_SYSTEM_EIGEN=ON
-                -DEIGEN3_INCLUDE_DIR=${eigen_catkin_INCLUDE_DIRS}
+                -DGTSAM_WITH_EIGEN_MKL=OFF
+                -DGTSAM_WITH_TBB=OFF
                 -DCMAKE_BUILD_TYPE=Release ../gtsam_src
   BUILD_COMMAND make -j8
   INSTALL_COMMAND make install
