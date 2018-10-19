@@ -9,7 +9,7 @@ include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
 ExternalProject_Add(gtsam_src
-  GIT_REPOSITORY git@bitbucket.org:gtborg/gtsam.git
+  GIT_REPOSITORY https://bitbucket.org/gtborg/gtsam.git
   GIT_TAG develop
   UPDATE_COMMAND ""
   PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/use_catkinized_metis.patch &&
