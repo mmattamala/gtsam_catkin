@@ -8,10 +8,11 @@ include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
 ExternalProject_Add(gtsam_src
-  GIT_REPOSITORY https://github.com/borglab/gtsam
-  UPDATE_COMMAND ""
-  PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/use_catkinized_metis.patch &&
-                patch -p1 < ${CMAKE_SOURCE_DIR}/fix_warnings.patch
+  GIT_REPOSITORY git@github.com:borglab/gtsam.git
+  GIT_TAG origin/develop
+  GIT_PROGRESS ON
+  #PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/use_catkinized_metis.patch
+  #              patch -p1 < ${CMAKE_SOURCE_DIR}/fix_warnings.patch
   CONFIGURE_COMMAND cmake -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
                           -DGTSAM_USE_SYSTEM_EIGEN=ON
                           -DGTSAM_WITH_EIGEN_MKL=OFF
