@@ -1,12 +1,13 @@
 gtsam_catkin
 ============
 
-A catkin wrapper for GTSAM
+A catkin wrapper for GTSAM 4.0. 
 
-This can be used one of two ways. 
+## Instructions
 
-1. Include this package in your workspace. It will download and compile the tarball of GTSAM.
-2. Clone the gtsam source code (if you have access) into your workspace as `gtsam`. The source now has a basic `package.xml` file that will cause catkin to build it. This `gtsam_catkin` package then works as a convenicence bridge, automatically linking the gtsam libraries when the dependency is put in the `package.xml` of a downstream package.
+Include this package in your workspace. When you build it with catkin it will download and compile the source code of GTSAM.
+
+By default it uses the `develop` branch. If you want to test other branch/tag, change [this line](CMakelists.txt#L12).
 
 ## Dependencies
 

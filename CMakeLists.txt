@@ -11,8 +11,6 @@ ExternalProject_Add(gtsam_src
   GIT_REPOSITORY git@github.com:borglab/gtsam.git
   GIT_TAG origin/develop
   GIT_PROGRESS ON
-  #PATCH_COMMAND patch -p1 < ${CMAKE_SOURCE_DIR}/use_catkinized_metis.patch
-  #              patch -p1 < ${CMAKE_SOURCE_DIR}/fix_warnings.patch
   CONFIGURE_COMMAND cmake -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
                           -DGTSAM_USE_SYSTEM_EIGEN=ON
                           -DGTSAM_WITH_EIGEN_MKL=OFF
@@ -35,9 +33,6 @@ install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/gtsam
 install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/gtsam_unstable
         DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
         FILES_MATCHING PATTERN "*.h")
-# install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/wrap
-#         DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
-#         FILES_MATCHING PATTERN "*.h")
 
 install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/lib/
         DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

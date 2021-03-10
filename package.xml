@@ -4,7 +4,8 @@
   <version>4.0.0</version>
   <description>gtsam_catkin</description>
 
-  <maintainer email="paul.furgale@mavt.ethz.ch">Paul Furgale</maintainer>
+  <author email="paul.furgale@mavt.ethz.ch">Paul Furgale</author>
+  <maintainer email="matias@robots.ox.ac.uk">Matias Mattamala</maintainer>
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
